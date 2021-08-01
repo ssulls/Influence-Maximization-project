@@ -1,7 +1,12 @@
 # Influence-Maximization-project
 All files relating to my individual project on influence maximization:
 1. Python program files - cascade_final.py, network_analysis_final.py, seed_selection_final.py & upgrades.py (not required to replicate this project, stores various builds and testing code)
-2. Dataset files - soc-sign-bitcoinotc.csv & facebook.csv
+2. Source code .txt file
+3. Dataset files - soc-sign-bitcoinotc.csv & facebook.csv
+4. Seed selection results Excel spreadsheet
+5. Latex algorithms source code .txt file
+6. Latex algorithms .pdf file
+7. Final written report word doc
 
 Guide:
 1. Install all program files , and the dataset files soc-sign-bitcoinotc.csv & facebook.csv.
