@@ -1,0 +1,100 @@
+\title{AlgorithmTemplate}
+\author{Sean}
+
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage[T1]{fontenc}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\include{pythonlisting}
+
+\begin{document}
+
+\begin{algorithm}
+\SetAlgorithmName{Propagation Model}
+\SetAlgoLined
+\DontPrintSemicolon
+%\KwIn{\textit{Graph G, Seeds S, Iterations R, Probability P}}
+%\KwOut{\textit{Mean spread of influence}}
+$\textsf{totalSpread} \gets \textsf{0}$ \\
+\For{$\textsf{iter} = \textsf{1 to R }$}{
+ $\textsf{tried} \gets \emptyset$ \\
+ $\textsf{newNodes} \gets \textsf{S}$ \\
+ \While{$\textsf{newNodes} \neq \emptyset  $}{
+ $\textsf{currentNodes} \gets \textsf{newNodes} $\\
+         $\textsf{newNodes} \gets \emptyset $ \\
+        \For{$\textsf{each node x : x} \in \textsf{newNodes }$}{
+           	 \For{$\textsf{each node y : y} \in \bf N_x \textsf{ and y} \notin \textsf{S }$}{
+           	    %\tcc{\small{($\bf{N_x}$ = set of node x's neighbour nodes)}}
+                 \If{$\textsf{Random(0, 1)} <  \textsf{P}$}{
+                     $\textsf{newNodes += node y}$ \\
+                    }
+                 $\textsf{tried += (node x, node y)}$ \\
+                 \tcp{\small{(line 12 alternative: tried += node y)}}
+                }            
+                }
+         $\textsf{S = S} \cup \textsf{currentNodes} \cup \textsf{newNodes}$}
+   	$\textsf{totalSpread += Len(S)}$}
+\Return $\textsf{(totalSpread / R)}$
+\caption{{\bf Independent Cascade (G, S, R, P)} \label{Algorithm}}
+\end{algorithm}
+
+\begin{algorithm}
+\SetAlgorithmName{Propagation Model}
+\SetAlgoLined
+\DontPrintSemicolon
+%\KwIn{\textit{Graph G, Seeds S, Iterations R}}
+%\KwOut{\textit{Mean spread of influence}}
+$\textsf{totalSpread} \gets \textsf{0}$ \\
+\For{$\textsf{iter} = \textsf{1 to R }$}{
+ $\textsf{tried} \gets \emptyset$ \\
+ $\textsf{newNodes} \gets \textsf{S}$ \\
+ \While{$\textsf{newNodes} \neq \emptyset  $}{
+ $\textsf{currentNodes} \gets \textsf{newNodes} $\\
+         $\textsf{newNodes} \gets \emptyset $ \\
+        \For{$\textsf{each node x : x} \in \textsf{newNodes }$}{
+           	 \For{$\textsf{each node y : y} \in \bf N_x \textsf{ and y} \notin \textsf{S }$}{
+           	    %\tcp{\small{($\bf{N_x}$ = set of node x's neighbour nodes)}}
+                 \If{$\textsf{Random(0, 1)} <  \textsf{(1 / in-degree(y))}$}{
+                     $\textsf{newNodes += node y}$ \\
+                    }
+                 $\textsf{tried += (node x, node y)}$ \\
+                 \tcp{\small{(line 12 alternative: tried += node y)}}
+                }            }
+         $\textsf{S = S} \cup \textsf{currentNodes} \cup \textsf{newNodes}$}
+   	$\textsf{totalSpread += Len(S)}$}
+\Return $\textsf{(totalSpread / R)}$
+\caption{{\bf Weighted Cascade 1 (G, S, R)} \label{Algorithm}}
+\end{algorithm}
+
+\begin{algorithm}
+\SetAlgorithmName{Propagation Model}
+\SetAlgoLined
+\DontPrintSemicolon
+%\KwIn{\textit{Graph G, Seeds S, Iterations R}}
+%\KwOut{\textit{Mean spread of influence}}
+$\textsf{totalSpread} \gets \textsf{0}$ \\
+\For{$\textsf{iter} = \textsf{1 to R }$}{
+ $\textsf{tried} \gets \emptyset$ \\
+ $\textsf{newNodes} \gets \textsf{S}$ \\
+ \While{$\textsf{newNodes} \neq \emptyset  $}{
+ $\textsf{currentNodes} \gets \textsf{newNodes} $\\
+         $\textsf{newNodes} \gets \emptyset $ \\
+        \For{$\textsf{each node x : x} \in \textsf{newNodes }$}{
+           	 \For{$\textsf{each node y : y} \in \bf N_x \textsf{ and y} \notin \textsf{S }$}{
+                %\tcp{\small{($\bf{N_x}$ = set of node x's neighbour nodes)}}
+                $\textsf{SND} \gets 0 $ \\
+                \For{$\textsf{each node z : z} \in \bf N_y$}{
+                $\textsf{SND += out-degree(z)}$}
+                 \If{$\textsf{Random(0, 1)} <  \textsf{(out-degree(x) / SND)}$}{
+                     $\textsf{newNodes += node y}$ \\
+                    }
+                 $\textsf{tried += (node x, node y)}$ \\
+                 \tcp{\small{(line 12 alternative: tried += node y)}}
+                }            }
+         $\textsf{S = S} \cup \textsf{currentNodes} \cup \textsf{newNodes}$}
+   	$\textsf{totalSpread += Len(S)}$}
+\Return $\textsf{(totalSpread / R)}$
+\caption{{\bf Weighted Cascade 2 (G, S, R)} \label{Algorithm}}
+\end{algorithm}
+
+\end{document}
