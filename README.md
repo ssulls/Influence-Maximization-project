@@ -1,8 +1,10 @@
 # Influence-Maximization-project
-All files relating to my individual project on influence maximization
+All files relating to my individual project on influence maximization:
+1. Python program files - cascade_final.py, network_analysis_final.py, seed_selection_final.py & upgrades.py (not required to replicate this project, stores various builds and testing code)
+2. Dataset files - soc-sign-bitcoinotc.csv & facebook.csv
 
 Guide:
-1. Install all program files (upgrades.py is not required to replicate this project, but merely stores various builds and testing), and the dataset files soc-sign-bitcoinotc.csv & facebook.csv.
+1. Install all program files , and the dataset files soc-sign-bitcoinotc.csv & facebook.csv.
 2. Manually edit the 'datasets' dictionary near the top of the page in cascade_final.py and change the path names to whatever their path names are now (this is described in Appendix B).
 3. Run cascade_final
 4. Run network_analysis_final
